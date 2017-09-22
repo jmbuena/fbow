@@ -46,7 +46,7 @@ OPTION(USE_CONTRIB "Set on/off" OFF)
 # ----------------------------------------------------------------------------
 #   Find Dependencies
 # ----------------------------------------------------------------------------
-find_package(OpenCV  REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
 MESSAGE("OPENCVINCDIR=${OpenCV_INCLUDE_DIRS}")
 
@@ -200,6 +200,8 @@ IF(CMAKE_COMPILER_IS_GNUCXX OR MINGW)
         SET(EXTRA_C_FLAGS_RELEASE "${EXTRA_C_FLAGS_RELEASE}  ")
     ENDIF()
 
+    # Set C++ 2003 and not C++11: JM Buenaposada
+    set(EXTRA_C_FLAGS_RELEASE "${EXTRA_C_FLAGS_RELEASE} -std=c++03 -pedantic")
 
     set(CMAKE_CXX_FLAGS_RELEASE "${EXTRA_C_FLAGS_RELEASE}  -O3  -std=c++11 -Wall -DNDEBUG")
     set(CMAKE_CXX_FLAGS_DEBUG "${EXTRA_C_FLAGS_RELEASE}  -g3  -DDEBUG -D_DEBUG   -std=c++11 -Wall")
