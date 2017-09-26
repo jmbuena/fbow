@@ -57,15 +57,15 @@ class FBOW_API Vocabulary
     ~Vocabulary();
 
     //transform the features stored as rows in the returned BagOfWords
-    fBow transform(const cv::Mat &features)throw(std::exception);
+    fBow transform(const cv::Mat &features); //throw(std::exception);
 
 
     //loads/saves from a file
-    void readFromFile(const std::string &filepath)throw(std::exception);    
-    void saveToFile(const std::string &filepath)throw(std::exception);
+    void readFromFile(const std::string &filepath); //throw(std::exception);
+    void saveToFile(const std::string &filepath); //throw(std::exception);
     ///save/load to binary streams
     void toStream(std::ostream &str) const;
-    void fromStream(std::istream &str)throw(std::exception);
+    void fromStream(std::istream &str); //throw(std::exception);
     //returns the descriptor type (CV_8UC1, CV_32FC1  )
     uint32_t getDescType()const{return _params._desc_type;}
     //returns desc size in bytes or 0 if not set
@@ -84,7 +84,7 @@ class FBOW_API Vocabulary
     uint64_t hash()const;
 
 private:
-     void  setParams(  int aligment,int k,int desc_type,int desc_size, int nblocks,std::string desc_name)throw(std::runtime_error);
+     void  setParams(  int aligment,int k,int desc_type,int desc_size, int nblocks,std::string desc_name); //throw(std::runtime_error);
     struct params{
         char _desc_name_[50]="";//descriptor name. May be empty
         uint32_t _aligment,_nblocks=0 ;//memory aligment and total number of blocks
@@ -323,7 +323,7 @@ private:
 
 
     template<typename Computer>
-    fBow _transform(const cv::Mat &features)throw(std::exception){
+    fBow _transform(const cv::Mat &features) { //throw(std::exception){
         Computer comp;
         comp.setParams(_params._desc_size,_params._desc_size_bytes_wp);
         using DType=typename Computer::DType;//distance type
