@@ -207,6 +207,7 @@ private:
         }
     };
 
+    /*
     struct L2_avx_generic:public Lx<__m256,float,32>{
         inline float computeDist(__m256 *ptr){
              __m256 sum=_mm256_setzero_ps(), sub_mult;
@@ -275,8 +276,7 @@ private:
 
 
     };
-
-
+    */
 
     //generic hamming distance calculator
      struct  L1_x64:public Lx<uint64_t,uint64_t,8>{

@@ -77,6 +77,7 @@ fBow Vocabulary::transform(const cv::Mat &features)throw(std::exception)
         else  result=  _transform<L1_x32>(features );
     }
     else if(features.type()==CV_32FC1){
+        /*
         if( cpu_info->HW_AVX && _params._aligment%32==0){ //AVX version
             if ( _params._desc_size==256) result= _transform<L2_avx_8w>(features);//specific for surf 256 bytes
             else result= _transform<L2_avx_generic>(features);//any other
@@ -85,6 +86,7 @@ fBow Vocabulary::transform(const cv::Mat &features)throw(std::exception)
             if ( _params._desc_size==256) result= _transform<L2_sse3_16w>(features);//specific for surf 256 bytes
             else result=_transform<L2_se3_generic>(features);//any other
         }
+        */
         //generic version
         result=_transform<L2_generic>(features);
     }
